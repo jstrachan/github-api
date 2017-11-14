@@ -88,7 +88,7 @@ class Requester {
     private HttpURLConnection uc;
     private boolean forceBody;
 
-    private static class Entry {
+    protected static class Entry {
         String key;
         Object value;
 
@@ -711,6 +711,10 @@ class Requester {
         }
 
         throw e;
+    }
+
+    protected List<Entry> getArgs() {
+        return args;
     }
 
     private static final List<String> METHODS_WITHOUT_BODY = asList("GET", "DELETE");

@@ -81,8 +81,8 @@ public class GitHub {
      */
     /*package*/ final String encodedAuthorization;
 
-    private final ConcurrentMap<String,GHUser> users;
-    private final ConcurrentMap<String,GHOrganization> orgs;
+    /*package*/ final ConcurrentMap<String,GHUser> users;
+    /*package*/ final ConcurrentMap<String,GHOrganization> orgs;
     // Cache of myself object.
     private GHMyself myself;
     private final String apiUrl;
@@ -291,7 +291,11 @@ public class GitHub {
     }
 
     /*package*/ Requester retrieve() {
-        return new Requester(this).method("GET");
+        return requester().method("GET");
+    }
+
+    /*package*/ Requester requester() {
+        return new Requester(this);
     }
 
     /**
